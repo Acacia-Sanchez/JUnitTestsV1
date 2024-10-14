@@ -159,24 +159,17 @@ public class ExercisesAcaTest {
         List<Integer> listanum = Arrays.asList(5, 3, 1);
         double result = exercises.calcularMedia(listanum);
         assertEquals(3, result);
-        assertNotNull(result);
-
-        
+        assertNotNull(result);        
     }
 
-
-        // 10. Método que calcula la media de una lista de enteros
-        public double calcularMedia(List<Integer> lista) {
-            if (lista == null || lista.isEmpty()) {
-                throw new IllegalArgumentException("La lista no puede ser nula o vacía");
-            }
-            return lista.stream()
-                    .mapToInt(Integer::intValue)
-                    .average()
-                    .getAsDouble();
-        }
-
-        
+    @Test
+    // test método 10, caso null
+    public void testCalcularMediaNull() {
+        List<Integer> listanum = null;
+        assertThrows(IllegalArgumentException.class, () -> {
+            exercises.calcularMedia(listanum);
+        });
+    }        
 
     @Test
     // test método 11 ¡¡ the last one !! lol
